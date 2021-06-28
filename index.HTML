@@ -1,5 +1,79 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2{font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+p {line-height: 2}
+.bgimg, .bgimg2 {
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+.bgimg {background-image: url("/bg1.jpg")}
+.bgimg2 {background-image: url("/w3images/flowers.jpg")}
+</style>
+<body onload="setTimeout(myFunction, 1300);" >
+
+<!-- Header / Home-->
+<header class="w3-display-container w3-wide bgimg w3-grayscale-min" id="splash"  >
+  <div class="w3-display-middle w3-text-white w3-center">
+    <h1 class="w3-jumbo">Ultimate Quality Compressor</h1>
+    <h2>Developed By Shahzaib Rasool</h2>
+    <h2><b>From Khanewal</b></h2>
+  </div>
+</header>
+
+<!-- Navbar (sticky bottom) -->
+<div class="w3-bottom w3-hide-small">
+  <div class="w3-bar w3-white w3-center w3-padding w3-opacity-min w3-hover-opacity-off">
+    <a href="#home" style="width:25%" class="w3-bar-item w3-button">Home</a>
+    <a href="https://facebook.com/srzaibi" style="width:25%" class="w3-bar-item w3-button">Facebook</a>
+    <a href="https://twitter.com/srzaibi" style="width:25%" class="w3-bar-item w3-button">Twitter</a>
+    <a href="https://srzaibi.blogspot.com" style="width:25%" class="w3-bar-item w3-button w3-hover-black">Website</a>
+  </div>
+</div>
+
+<!-- Background photo -->
+<div class="w3-center w3-black w3-padding-16" >
+  
 
 
+<h1>High Quality Image Compressor</h1>
+
+
+<h1>Developed By Shahzaib Rasool</h1>
+<p>Pakistan's first Offline Image Compressing Software</p>
+
+<div class="slidecontainer">
+  <input type="range" min="0" max="100" value="98" class="slider" id="myRange">
+  <p>Quality<span id="demo"></span></p>
+</div>
+
+
+
+
+<p>Fastest Compressor ever</p>
+<center>
+<div class="img-comp-container">
+  <div class="img-comp-img">
+    <img id="before"  width="400" height="250">
+  </div>
+  <div class="img-comp-img img-comp-overlay">
+    <img id="after"  width="400" height="250">
+  </div>
+</div>
+
+</center>
+
+<div id="root">
+  <p>Upload an image and see the result</p>
+  <input id="img-input" type="file" accept="image/*" style="display:block" />
+</div>
 
 
 <style>
@@ -7,7 +81,9 @@
 
 .img-comp-container {
   position: relative;
-  height: 200px; /*should be the same height as the images*/
+  
+width: 400px;
+  height: 250px; /*should be the same height as the images*/
 }
 
 .img-comp-img {
@@ -34,8 +110,30 @@
   border-radius: 50%;
 }
 </style>
+
+
+
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-16">
+  <p>Powered by Shahzaib R and <a href="https://vuengineers.blogspot.com/" title="W3.CSS" target="_blank" class="w3-hover-text-green">Vu Engineers</a></p>
+</footer>
+<div class="w3-hide-small" style="margin-bottom:32px"> </div>
+
+</body>
+
+
 <script>
-function initComparisons() {
+
+function myFunction() {
+ 
+  var elem = document.getElementById("splash");
+elem.remove();
+}
+
+
+ function initComparisons() {
   var x, i;
   /*find all elements with an "overlay" class:*/
   x = document.getElementsByClassName("img-comp-overlay");
@@ -111,52 +209,8 @@ function initComparisons() {
     }
   }
 }
-</script>
+  initComparisons();
 
-<body>
-
-<h1>Compare Two Images</h1>
-
-
-<h1>Custom Range Slider</h1>
-<p>Drag the slider to display the current value.</p>
-
-<div class="slidecontainer">
-  <input type="range" min="0" max="100" value="10" class="slider" id="myRange">
-  <p>Value: <span id="demo"></span></p>
-</div>
-
-<script>
-
-</script>
-
-
-<p>Click and slide the blue slider to compare two images:</p>
-
-<div class="img-comp-container">
-  <div class="img-comp-img">
-    <img id="before"  width="300" height="200">
-  </div>
-  <div class="img-comp-img img-comp-overlay">
-    <img id="after"  width="300" height="200">
-  </div>
-</div>
-
-<script>
-/*Execute a function that will execute an image compare function for each element with the img-comp-overlay class:*/
-initComparisons();
-</script>
-
-
-
-
-<div id="root">
-  <p>Upload an image and see the result</p>
-  <input id="img-input" type="file" accept="image/*" style="display:block" />
-</div>
-
-</body>
-<script>
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 
@@ -167,48 +221,6 @@ QUALITY = this.value/100;
  
 output.innerHTML = QUALITY;
  
-output.innerHTML = QUALITY;
-const MAX_WIDTH = 1380;
-const MAX_HEIGHT = 820;
-const MIME_TYPE = "image/jpeg";
-
-
-const input = document.getElementById("img-input");
-
-  img.src = blobURL;
- 
-    URL.revokeObjectURL(this.src);
-    const [newWidth, newHeight] = calculateSize(img, MAX_WIDTH, MAX_HEIGHT);
-    const canvas = document.createElement("canvas");
-    canvas.width = newWidth;
-    canvas.height = newHeight;
-    const ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0, newWidth, newHeight);
-    canvas.toBlob(
-      (blob) => {
-        // Handle the compressed image. es. upload or save in local state
-        displayInfo('Original file', file);
-var blobUrl = URL.createObjectURL(blob);
-
-var link = document.createElement("a"); // Or maybe get it from the current document
-link.href = blobUrl;
-link.download = "Document";
-link.innerHTML = "Click here to download the file";
-document.getElementById("root").appendChild(link); 
-
-document.getElementById('after').src = blobUrl;
-  
-
-        displayInfo('Compressed file', blob);
-      },
-      MIME_TYPE,
-      QUALITY
-    );
-
-  };
-};
-
-
 }
 
 output.innerHTML = QUALITY;
@@ -245,8 +257,11 @@ var blobUrl = URL.createObjectURL(blob);
 
 var link = document.createElement("a"); // Or maybe get it from the current document
 link.href = blobUrl;
-link.download = "Document";
-link.innerHTML = "Click here to download the file";
+
+var fileInput = document.getElementById('img-input');   
+var filename = fileInput.files[0].name;
+link.download = filename;
+link.innerHTML = filename;
 document.getElementById("root").appendChild(link); 
 
 document.getElementById('after').src = blobUrl;
@@ -294,4 +309,7 @@ function readableBytes(bytes) {
 
   return (bytes / Math.pow(1024, i)).toFixed(2) + ' ' + sizes[i];
 }
+
 </script>
+
+</html>
