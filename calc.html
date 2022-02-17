@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>انتقال فیس کیلکولیٹر</h3>
+<a href="https://es.punjab.gov.pk/eStampCitizenPortal/ChallanFormView/RateOfChallanView?name=PropertyDCValuation&vCount=607164">فیس کا شڈول جاننے کیلئے یہاں کلک کریں</a><br>
+
+
+<input placeholder="قیمت اراضی"  id="schedule" style="height: 42px;border-radius: unset;border-block: revert;font-size: smaller;"></br>
+<input type="checkbox" id="cgtchk" name="cgtchk1" value="1">پرانہ مالک</br>
+<button id="calc" onclick="calculate()">CALCULATE</button>
+
+
+<div class="container">
+	
+	<div class="table">
+		<div class="table-header">
+			<div class="header__item"><a id="name" class="filter__link" href="#">مجوزہ فیس</a></div>
+			<div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">قسم فیس</a></div>
+			
+			
+		</div>
+		<div class="table-content">	
+			<div class="table-row">		
+				<div class="table-data" id="MUTATION">0</div>
+				<div class="table-data">انتقال فیس
+</div>
+				
+			</div>
+			<div class="table-row">
+				<div class="table-data" id="TEHSILE">0</div>
+				<div class="table-data">تحصیل کونسل فیس</div>
+			
+			</div>
+			<div class="table-row">		
+				<div class="table-data" id="CGT">0</div>
+				<div class="table-data">گین ٹیکس</div>
+
+				
+			</div>
+			<div class="table-row">
+				<div class="table-data" id="FBR">0</div>
+				<div class="table-data">ایڈوانس ٹیکس</div>
+			
+			</div>
+			<div class="table-row">		
+				<div class="table-data" id="SCO">0</div>
+				<div class="table-data">سروس سنٹر فیس</div>
+				
+			</div>
+			<div class="table-row">
+				<div class="table-data" id="SERC">0</div>
+				<div class="table-data">سروس چارجز</div>
+			
+			</div>
+			<div class="table-row">
+				<div class="table-data" id="TOTAL">0</div>
+				<div class="table-data">ٹوٹل میزان</div>			
+			</div>
+		
+		</div>	
+	</div>
+</div>
+
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Noto+Nastaliq+Urdu');
+
+$base-spacing-unit: 10px;
+$half-spacing-unit: $base-spacing-unit / 2;
+
+$color-alpha: #1772FF;
+$color-form-highlight: #EEEEEE;
+
+*, *:before, *:after {
+	box-sizing:border-box;
+}
+
+body {
+	padding:$base-spacing-unit;
+	font-family:'Noto Nastaliq Urdu', sans-serif;
+	margin:0;
+	font-size: 1.4em;
+	text-align: center;}
+
+h1,h2,h3,h4,h5,h6 {
+	margin:0;
+}
+
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.container {
+	max-width: 100٪;
+	font-size: 0.67em;
+    margin-top: 20px;
+	margin-right:auto;
+	margin-left:auto;
+	display:flex;
+	justify-content:center;
+	align-items:top;
+	min-height:100vh;
+}
+
+.table {
+	width:100%;
+	border:1px solid $color-form-highlight;
+}
+
+.table-header {
+	display:flex;
+	width:100%;
+	background:#000;
+	padding:($half-spacing-unit * 1.5) 0;
+}
+
+.table-row {
+	display:flex;
+	width:100%;
+	padding:($half-spacing-unit * 1.5) 0;
+	
+	&:nth-of-type(odd) {
+		background:$color-form-highlight;
+	}
+}
+
+.table-data, .header__item {
+	flex: 1 1 20%;
+	text-align:center;
+}
+
+.header__item {
+	text-transform:uppercase;
+}
+
+.filter__link {
+	color:white;
+	text-decoration: none;
+	position:relative;
+	display:inline-block;
+	padding-left:$base-spacing-unit;
+	padding-right:$base-spacing-unit;
+	
+	&::after {
+		content:'';
+		position:absolute;
+		right:-($half-spacing-unit * 1.5);
+		color:white;
+		font-size:$half-spacing-unit;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	
+	&.desc::after {
+		content: '(desc)';
+	}
+
+	&.asc::after {
+		content: '(asc)';
+	}
+	
+}
+</style>
+
+<script>
+var input = document.getElementById("schedule");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("calc").click();
+  }
+});
+
+
+ function calculate(){
+var schedule=0;
+schedule = Number(document.getElementById("schedule").value);
+var MUTATION = (schedule/100)*3;
+var TEHSILE = (schedule/100)*1;
+var CGT = (schedule/100)*2;
+var FBR = (schedule/100)*2;
+var SCO = 200;
+var SERC = 500;
+
+var checkBox = document.getElementById("cgtchk");
+  var text = document.getElementById("CGT");
+  if (checkBox.checked == true){
+    var TOTAL = MUTATION+TEHSILE+FBR+SCO+SERC
+  } else {
+     var TOTAL = MUTATION+TEHSILE+CGT+FBR+SCO+SERC
+  }
+
+
+document.getElementById("MUTATION").innerHTML = MUTATION;
+document.getElementById("TEHSILE").innerHTML = TEHSILE;
+document.getElementById("CGT").innerHTML = CGT;
+document.getElementById("FBR").innerHTML = FBR;
+document.getElementById("SCO").innerHTML = SCO;
+document.getElementById("SERC").innerHTML = SERC;
+document.getElementById("TOTAL").innerHTML = TOTAL;
+
+}
+
+
+
+
+
+function myFunction() {
+  
+}
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
